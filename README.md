@@ -6,7 +6,7 @@
     <br>
 </p>
 
-## Install
+### Install
 
 ```shell
 composer require yii-tools/support
@@ -22,7 +22,7 @@ To run the checker, execute the following command:
 ./vendor/bin/composer-require-checker
 ```
 
-## Mutation testing
+### Mutation testing
 
 Mutation testing is checked with [Infection](https://infection.github.io/). To run it:
 
@@ -30,7 +30,7 @@ Mutation testing is checked with [Infection](https://infection.github.io/). To r
 ./vendor/bin/roave-infection-static-analysis-plugin
 ```
 
-## Unit testing
+### Unit testing
 
 Unit testing is checked with [PHPUnit](https://phpunit.de/). To run it:
 
@@ -38,7 +38,7 @@ Unit testing is checked with [PHPUnit](https://phpunit.de/). To run it:
 ./vendor/bin/phpunit
 ```
 
-## Static analysis
+### Static analysis
 
 Static analysis is checked with [Psalm](https://psalm.dev/). To run it:
 
@@ -46,7 +46,7 @@ Static analysis is checked with [Psalm](https://psalm.dev/). To run it:
 ./vendor/bin/psalm
 ```
 
-## CI status
+### CI status
 
 [![build](https://github.com/yii-tools/support/actions/workflows/build.yml/badge.svg)](https://github.com/yii-tools/support/actions/workflows/build.yml)
 [![codecov](https://codecov.io/gh/yii-tools/support/branch/main/graph/badge.svg?token=CEBVCYZNQK)](https://codecov.io/gh/yii-tools/support)
@@ -55,10 +55,10 @@ Static analysis is checked with [Psalm](https://psalm.dev/). To run it:
 [![type-coverage](https://shepherd.dev/github/yii-tools/support/coverage.svg)](https://shepherd.dev/github/yiii-tools/support)
 [![StyleCI](https://github.styleci.io/repos/584864695/shield?branch=main)](https://github.styleci.io/repos/584864695?branch=main)
 
-## License
+### License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-## Our social networks
+### Our social networks
 
 [![Twitter](https://img.shields.io/badge/twitter-follow-1DA1F2?logo=twitter&logoColor=1DA1F2&labelColor=555555?style=flat)](https://twitter.com/Terabytesoftw)
