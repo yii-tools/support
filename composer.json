@@ -1,0 +1,45 @@
+{
+    "name": "yii-tools/support",
+    "type": "library",
+    "description": "Support library tests for Yii3",
+    "keywords": [
+        "yii-tools",
+        "support",
+        "tests",
+        "yii3"
+    ],
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^8.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "require-dev": {
+        "maglnet/composer-require-checker": "^4.2",
+        "roave/infection-static-analysis-plugin": "*",
+        "symplify/easy-coding-standard": "^11.1.29",
+        "vimeo/psalm": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yii\\Support\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yii\\support\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "infection/extension-installer": true
+        }
+    }
+}
