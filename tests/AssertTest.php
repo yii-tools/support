@@ -58,7 +58,7 @@ final class AssertTest extends TestCase
     public function testRemoveFilesFromDirectoryWithException(): void
     {
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage('Unable to open directory: D:\yii-tools\support\tests/non-existing-directory');
+        $this->expectExceptionMessage('Unable to open directory: non-existing-directory');
 
         Assert::removeFilesFromDirectory(__DIR__ . '/non-existing-directory');
     }
