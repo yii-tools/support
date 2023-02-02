@@ -90,7 +90,7 @@ final class Assert extends TestCase
      */
     public static function removeFilesFromDirectory(string $basePath): void
     {
-        $handle = opendir($basePath);
+        $handle = @opendir($basePath);
 
         if ($handle === false) {
             throw new RuntimeException("Unable to open directory: $basePath");
