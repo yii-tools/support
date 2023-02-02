@@ -10,6 +10,7 @@ use ReflectionObject;
 use RuntimeException;
 use Yiisoft\Files\FileHelper;
 
+use function basename;
 use function closedir;
 use function is_dir;
 use function opendir;
@@ -90,10 +91,11 @@ final class Assert extends TestCase
      */
     public static function removeFilesFromDirectory(string $basePath): void
     {
-        $handle = opendir($basePath);
+        $handle = @opendir($basePath);
 
         if ($handle === false) {
-            throw new RuntimeException("Unable to open directory: $basePath");
+            $dirname = basename($basePath);
+            throw new RuntimeException("Unable to open directory: $dirname");
         }
 
         while (($file = readdir($handle)) !== false) {

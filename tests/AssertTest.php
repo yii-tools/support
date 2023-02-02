@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yii\Support\Tests;
 
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 use Yii\Support\Assert;
 
 /**
@@ -43,12 +44,22 @@ final class AssertTest extends TestCase
         $dir = __DIR__ . '/runtime';
 
         mkdir($dir);
+        mkdir($dir . '/subdir');
         touch($dir . '/test.txt');
+        touch($dir . '/subdir/test.txt');
 
         Assert::removeFilesFromDirectory($dir);
 
         $this->assertFileDoesNotExist($dir . '/test.txt');
 
         rmdir($dir);
+    }
+
+    public function testRemoveFilesFromDirectoryWithException(): void
+    {
+        $this->expectException(RuntimeException::class);
+        $this->expectExceptionMessage('Unable to open directory: non-existing-directory');
+
+        Assert::removeFilesFromDirectory(__DIR__ . '/non-existing-directory');
     }
 }
