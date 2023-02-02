@@ -7,6 +7,9 @@ namespace Yii\Support\Tests;
 use PHPUnit\Framework\TestCase;
 use Yii\Support\Assert;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 final class AssertTest extends TestCase
 {
     public function testEqualsWithoutLE(): void
@@ -33,5 +36,19 @@ final class AssertTest extends TestCase
         };
 
         $this->assertSame('foo', Assert::invokeMethod($object, 'foo'));
+    }
+
+    public function testRemoveFilesFromDirectory(): void
+    {
+        $dir = __DIR__ . '/runtime';
+
+        mkdir($dir);
+        touch($dir . '/test.txt');
+
+        Assert::removeFilesFromDirectory($dir);
+
+        $this->assertFileDoesNotExist($dir . '/test.txt');
+
+        rmdir($dir);
     }
 }

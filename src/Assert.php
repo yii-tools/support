@@ -6,9 +6,14 @@ namespace Yii\Support;
 
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
-use ReflectionException;
 use ReflectionObject;
+use RuntimeException;
+use Yiisoft\Files\FileHelper;
 
+use function closedir;
+use function is_dir;
+use function opendir;
+use function readdir;
 use function str_replace;
 
 /**
@@ -59,8 +64,6 @@ final class Assert extends TestCase
      * @param object $object The object to invoke the method on.
      * @param string $method The name of the method to invoke.
      * @param array $args The arguments to pass to the method.
-     *
-     * @throws ReflectionException
      */
     public static function invokeMethod(object $object, string $method, array $args = []): mixed
     {
@@ -76,5 +79,37 @@ final class Assert extends TestCase
         }
 
         return $result;
+    }
+
+    /**
+     * Remove files from the directory.
+     *
+     * @param string $basePath The directory to remove files from.
+     *
+     * @throws RuntimeException
+     */
+    public static function removeFilesFromDirectory(string $basePath): void
+    {
+        $handle = opendir($basePath);
+
+        if ($handle === false) {
+            throw new RuntimeException("Unable to open directory: $basePath");
+        }
+
+        while (($file = readdir($handle)) !== false) {
+            if ($file === '.' || $file === '..' || $file === '.gitignore' || $file === '.gitkeep') {
+                continue;
+            }
+
+            $path = $basePath . DIRECTORY_SEPARATOR . $file;
+
+            if (is_dir($path)) {
+                FileHelper::removeDirectory($path);
+            } else {
+                FileHelper::unlink($path);
+            }
+        }
+
+        closedir($handle);
     }
 }

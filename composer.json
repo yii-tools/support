@@ -13,7 +13,8 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.1",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "yiisoft/files": "^2.0"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^4.2",
@@ -28,7 +29,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Yii\\support\\Tests\\": "tests"
+            "Yii\\Support\\Tests\\": "tests"
         }
     },
     "extra": {
@@ -41,5 +42,11 @@
         "allow-plugins": {
             "infection/extension-installer": true
         }
+    },
+    "scripts": {
+        "check-dependencies": "composer-require-checker",
+        "mutation": "roave-infection-static-analysis-plugin -j2 --only-covered",
+        "psalm": "psalm",
+        "test": "phpunit"
     }
 }

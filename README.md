@@ -12,38 +12,38 @@
 composer require yii-tools/support
 ```
 
-### Composer require checker
+## Checking dependencies
 
 This package uses [composer-require-checker](https://github.com/maglnet/ComposerRequireChecker) to check if all dependencies are correctly defined in `composer.json`.
 
 To run the checker, execute the following command:
 
 ```shell
-./vendor/bin/composer-require-checker
+composer run check-dependencies
 ```
 
-### Mutation testing
+## Mutation testing
 
 Mutation testing is checked with [Infection](https://infection.github.io/). To run it:
 
 ```shell
-./vendor/bin/roave-infection-static-analysis-plugin
+composer run mutation
 ```
 
-### Unit testing
+## Static analysis
 
-Unit testing is checked with [PHPUnit](https://phpunit.de/). To run it:
+The code is statically analyzed with [Psalm](https://psalm.dev/). To run static analysis:
 
 ```shell
-./vendor/bin/phpunit
+composer run psalm
 ```
 
-### Static analysis
+## Testing
 
-Static analysis is checked with [Psalm](https://psalm.dev/). To run it:
+The code is tested with [PHPUnit](https://phpunit.de/). To run tests:
 
-```shell
-./vendor/bin/psalm
+```
+composer run test
 ```
 
 ### CI status
