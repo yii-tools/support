@@ -13,14 +13,14 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.1",
-        "phpunit/phpunit": "^9.5",
+        "phpunit/phpunit": "^9.6|^10.0",
         "yiisoft/files": "^2.0"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^4.2",
-        "roave/infection-static-analysis-plugin": "*",
+        "roave/infection-static-analysis-plugin": "^1.29",
         "symplify/easy-coding-standard": "^11.1.29",
-        "vimeo/psalm": "^5.4"
+        "vimeo/psalm": "^5.6"
     },
     "autoload": {
         "psr-4": {
