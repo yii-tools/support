@@ -83,6 +83,24 @@ final class Assert extends TestCase
     }
 
     /**
+     * Sets an inaccessible object property to a designated value.
+     */
+    public static function setInaccessibleProperty(
+        object $object,
+        string $propertyName,
+        mixed $value
+    ): void {
+        $class = new ReflectionClass($object);
+
+        if ($propertyName !== '') {
+            $property = $class->getProperty($propertyName);
+            $property->setValue($object, $value);
+        }
+
+        unset($class, $property);
+    }
+
+    /**
      * Remove files from the directory.
      *
      * @param string $basePath The directory to remove files from.

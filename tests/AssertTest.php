@@ -39,6 +39,17 @@ final class AssertTest extends TestCase
         $this->assertSame('foo', Assert::invokeMethod($object, 'foo'));
     }
 
+    public function testSetInaccessibleProperty(): void
+    {
+        $object = new class () {
+            private string $foo = 'bar';
+        };
+
+        Assert::setInaccessibleProperty($object, 'foo', 'baz');
+
+        $this->assertSame('baz', Assert::inaccessibleProperty($object, 'foo'));
+    }
+
     public function testRemoveFilesFromDirectory(): void
     {
         $dir = __DIR__ . '/runtime';
@@ -52,7 +63,7 @@ final class AssertTest extends TestCase
 
         $this->assertFileDoesNotExist($dir . '/test.txt');
 
-        rmdir($dir);
+        rmdir(__DIR__ . '/runtime');
     }
 
     public function testRemoveFilesFromDirectoryWithException(): void
